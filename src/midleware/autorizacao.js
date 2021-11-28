@@ -1,5 +1,5 @@
-const conexao = require('./conexao')
 const jwt = require('jsonwebtoken')
+const secret = require('../secret')
 
 const verificaLogin = async (req, res, next) => {
   const { authorization } = req.headers
@@ -11,7 +11,7 @@ const verificaLogin = async (req, res, next) => {
   try {
     const token = authorization.replace('Bearer', '').trim()
 
-    const { id } = jwt.verify(token, process.env.PW_JWT)
+    const { id } = jwt.verify(token, secret)
 
     const usuarioExiste = await knex('usuarios').where({ id }).first()
 
@@ -25,12 +25,10 @@ const verificaLogin = async (req, res, next) => {
 
     next()
   } catch (error) {
-    return res
-      .status(401)
-      .json({
-        mensagem:
-          'Para acessar este recurso um token de autenticação válido deve ser enviado.',
-      })
+    return res.status(401).json({
+      mensagem:
+        'Para acessar este recurso um token de autenticação válido deve ser enviado.',
+    })
   }
 }
 
