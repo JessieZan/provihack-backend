@@ -10,6 +10,7 @@
 - JWToken
 - node-postegres (pg)
 - Yup 
+- Node.js
 
 ## End-Points
 
@@ -75,15 +76,15 @@
 
 ### Cadastro Usuario
 
-### Endpoint - http://localhost:3000/users
+### Endpoint - https://api-provihack-equipe05.herokuapp.com/cadastro
 
 ### POST
 #### Dados Enviados
 
  {
-	"name": "Jéssica Vargas Zanchetta",
+	"nome": "Jéssica Vargas Zanchetta",
 	"email": "jessica.zanchettaa@hotmail.com",
-	"password": "12345678"
+	"senha": "12345678"
     "phone": "49999998888"
 }
 
@@ -95,7 +96,7 @@
 
 ### Login Usuario
 
-### Endpoint - http://localhost:3000/login
+### Endpoint - https://api-provihack-equipe05.herokuapp.com/login
 
 ### POST
 #### Dados Enviados
@@ -113,7 +114,6 @@
     "id": 3,
     "name": "Jéssica Vargas Zanchetta",
     "email": "jessica.zanchettaa@hotmail.com",
-    "cpf": null,
     "phone": null
   },
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjM3ODc1MzI0LCJleHAiOjE2Mzc5MDQxMjR9.G0a6J5R9mpZegreZSPffszaI86miA0pVZDmzMx2g-tI"
@@ -125,24 +125,20 @@
 
 ### Busca de serviços
 
-### Endpoint - http://localhost:3000/services
+### Endpoint - https://api-provihack-equipe05.herokuapp.com/servicos
 
-### POST
+### GET
 
 #### Dados Enviados
 
 {
- "busca": "Apoio Psicologico"
+  “categoria”: “Apoio Psicologico” 
 }
 
 #### Dados Recebidos 
 
 {
-	"name": "Jéssica Vargas Zanchetta",
-	"email": "jessica.zanchettaa@hotmail.com",
-	"resumo": "Oferecemos ajuda psicológica para pessoas em situação de dificuldade.",
-	"phone": "49999996655",
-    "categoria": "Apoio Psicologico"
+    "Resultado da pesquisa (lista dos parceiros para o serviço escolhido)"
 }
 
 
