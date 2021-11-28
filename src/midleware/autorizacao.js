@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken')
-const secret = require('../secret')
 
 const verificaLogin = async (req, res, next) => {
   const { authorization } = req.headers
@@ -11,7 +10,7 @@ const verificaLogin = async (req, res, next) => {
   try {
     const token = authorization.replace('Bearer', '').trim()
 
-    const { id } = jwt.verify(token, secret)
+    const { id } = jwt.verify(token, process.env.PW_JWT)
 
     const usuarioExiste = await knex('usuarios').where({ id }).first()
 

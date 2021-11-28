@@ -2,7 +2,6 @@ const knex = require('../conexao')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const schemaLogin = require('../validacoes/shemaLogin')
-const secret = require('../secret')
 
 const login = async (req, res) => {
   const { email, senha } = req.body
@@ -22,7 +21,7 @@ const login = async (req, res) => {
       return res.status(400).json('Email e senha não confere')
     }
 
-    const token = jwt.sign({ id: usuario.id }, secret, {
+    const token = jwt.sign({ id: usuario.id }, process.env.PW_JWT, {
       expiresIn: '8h',
     })
 
