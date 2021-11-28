@@ -1,4 +1,6 @@
 const jwt = require('jsonwebtoken')
+const knex = require('../conexao')
+
 
 const verificaLogin = async (req, res, next) => {
   const { authorization } = req.headers
@@ -8,7 +10,7 @@ const verificaLogin = async (req, res, next) => {
   }
 
   try {
-    const token = authorization.replace('Bearer', '').trim()
+    const token = authorization.replace('Bearer ', '').trim()
 
     const { id } = jwt.verify(token, process.env.PW_JWT)
 
@@ -26,7 +28,7 @@ const verificaLogin = async (req, res, next) => {
   } catch (error) {
     return res.status(401).json({
       mensagem:
-        'Para acessar este recurso um token de autenticação válido deve ser enviado.',
+        'Para acessar este recurso um token de autenticação válido deve ser enviado.'
     })
   }
 }
