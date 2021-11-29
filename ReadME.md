@@ -1,6 +1,6 @@
 # Back-End
 
-Repositorio contendo o codigo de front desenvolvido pela equipe 05 do Provihack para todos
+Repositorio contendo o codigo de back desenvolvido pela equipe 05 do Provihack para todos
 
 ### Tecnologias Utilizadas
 
